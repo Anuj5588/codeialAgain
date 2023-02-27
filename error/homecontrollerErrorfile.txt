@@ -1,0 +1,97 @@
+
+// const Post =require('../models/post')
+// const User=require('../models/user')
+
+// const Comment= require('../models/comment');
+
+// module.exports.home=function(req,res){
+
+//     // User.find({},function(err,users){
+//     //     return res.render('home',{title:"Home", users:users})
+        
+//     // })
+
+
+
+
+
+
+
+//     Post.find({},function(err,posts){
+
+//         return res.render('home',{title:"Home", posts:posts,user: req.user_id})
+//     })
+
+
+
+  
+//         Comment.find({},function(err,comments){
+        
+//             return res.render('home',{title:"Home",comments:comments})
+        
+        
+//         })
+
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+// //     // console.log(req.cookies);
+// //     // res.cookie('user_id',25)
+
+// // // to find all the post we use find()
+// //     // Post.find({content:'post1'}, function(err,posts){
+// //     //                   // we define the posts here and view in home.ejs
+// //     //     return res.render('home',{title:"Home", posts:posts})
+    
+// //     // })
+
+// //    Post.find({}).populate('user').exec(function(err,posts){
+
+// //         return res.render('home',{title:"Home", posts:posts})
+// //     })
+    
+// // }
+
+// // //how to add new controller 
+// // //module.exports.actionName= function(req,res){}
+
+// //    //for find the user name for every post we use the populate but after the populate we use the exec for callback function because we populate the find() which is the call-back function
+// //     //populate each user using the find
+    
+
+
+
+
+// // const Post = require('../models/post');
+
+// // module.exports.home = function(req, res){
+// //     // console.log(req.cookies);
+// //     // res.cookie('user_id', 25);
+
+// //     Post.find({}, function(err, posts){
+// //     //     return res.render('home', {
+// //     //         title: "Codeial | Home",
+// //     //         posts:  posts
+// //     //     });
+// //     // });
+
+// //     // populate the user of each post
+// //     Post.find({}).populate('user')
+// //         return res.render('home', {
+// //             title: "Codeial | Home",
+// //             posts:  posts
+// //         });
+// //     })
+
+// // }
