@@ -1,4 +1,8 @@
 const User = require("../models/user");
+const fs = require('fs');
+const path = require('path');
+
+
 
 const Post = require("../models/post");
 module.exports.profile = function (req, res) {
@@ -106,14 +110,59 @@ module.exports.destroySession = async function (req, res) {
 
 // }
 
+ try{
 // for update the data
+module.exports.update = async function (req, res) {
+  //   if (req.user.id == req.params.id) {
+  //     User.findByIdAndUpdate(req.params.id, req.body, function (err, user) {
+  //       return res.redirect("back");
+  //     });
+  //   } else {
+  //     return res.status(401).send("Unauthorized");
+  //   }
+ 
 
-module.exports.update = function (req, res) {
   if (req.user.id == req.params.id) {
-    User.findByIdAndUpdate(req.params.id, req.body, function (err, user) {
-      return res.redirect("back");
-    });
-  } else {
+    
+      let user = await User.findById(req.params.id);
+
+      User.uploadedAvatar(req, res, function (err) {
+        if (err) {
+          console.log("*******Multer Error", err);
+        }
+        console.log(req.file);
+        user.name = req.body.name;
+        user.email = req.body.email;
+
+        if (req.file) {
+
+          if (user.avatar){
+
+
+            fs.unlinkSync(path.join(__dirname,'..',user.avatar))
+
+          }
+               
+
+
+
+
+
+          //this is saving the path of the uploads file into the avatar field in the user
+          user.avatar = User.avatarPath + "/" + req.file.filename;
+        }
+
+        user.save();
+        return res.redirect("back");
+      });
+    } 
+   else {
+    req.flash("error", "unauthorized");
+
     return res.status(401).send("Unauthorized");
   }
-};
+}
+}
+catch (err) {
+  console.log("error", err);
+}
