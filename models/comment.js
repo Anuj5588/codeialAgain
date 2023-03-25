@@ -13,7 +13,8 @@ const commentSchema = new mongoose.Schema({
     },
     post: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Post'
+        ref: 'Post',
+        require:true
     }
 },{
     timestamps: true

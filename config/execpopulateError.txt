@@ -1,0 +1,2 @@
+// error coming while send the mail but this error is coming from the execPopulate() fuction which is not use by the mngoose but the solution is in the schema 
+// where we use the reference key add another key require:true only
