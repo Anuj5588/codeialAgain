@@ -39,4 +39,6 @@ router.get('/auth/facebook',passport.authenticate('facebook',{scope:['profile','
 
 router.get('/auth/facebook/callback', passport.authenticate('facebook', { failureRedirect: '/users/sign-in' }),usersController.createSession)
 
+// router.post()
+
 module.exports = router;
