@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-
+const bcrypt = require('bcrypt')
 const multer = require("multer");
 const path = require("path");
 
@@ -28,6 +28,21 @@ const userSchema = new mongoose.Schema(
     timestamps: true,
   }
 );
+
+userSchema.pre("save" ,async function(next){
+
+ if(!this.isModified("password")){
+
+  return next();
+ }
+
+ const hash = await bcrypt.hash(this.password, Number(bcryptSalt));
+ this.password= hash;
+
+ next();
+
+
+})
 
 let storage = multer.diskStorage({
   destination: function (req, file, cb) {

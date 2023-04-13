@@ -26,6 +26,10 @@ router.get("/sign-in", usersController.signIn);
 
 router.post("/create", usersController.create);
 
+
+
+
+
 // use passport as middleware to authenticate
 //passport.authenticate it is inbuild function
 router.post("/create-session",passport.authenticate("local", { failureRedirect: "/users/sign-in" }),usersController.createSession);
@@ -38,6 +42,7 @@ router.get('/auth/google/callback',passport.authenticate('google',{failureRedire
 router.get('/auth/facebook',passport.authenticate('facebook',{scope:['profile','email']}));
 
 router.get('/auth/facebook/callback', passport.authenticate('facebook', { failureRedirect: '/users/sign-in' }),usersController.createSession)
+
 
 // router.post()
 

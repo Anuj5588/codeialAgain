@@ -9,6 +9,8 @@ router.use("/users", require("./users"));
 router.use("/posts", require("./posts_router"));
 router.use("/comments", require("./comments_router"));
 router.use("/api",require('./api'));
+router.use('/likes', require('./likes'));
+
 
 // router.post('/uesrs',require('./users'))
 // to use the controllers in routes

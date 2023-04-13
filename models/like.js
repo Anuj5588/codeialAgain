@@ -1,13 +1,13 @@
 const mongoose = require("mongoose");
 
-const likeSchema = new mongoose.Schema(
-  {
+const likeSchema = new mongoose.Schema({
     user: {
-      type: mongoose.Schema.objectId,
+      type: mongoose.Schema.ObjectId,
+      require:true
     },
     // this define the object id of the liked object
     likeable: {
-      type: mongoose.Schema.objectId,
+      type: mongoose.Schema.ObjectId,
       require: true,
       refPath: "onModel",
     },
@@ -15,7 +15,7 @@ const likeSchema = new mongoose.Schema(
     onModel: {
       type: String,
       require: true,
-      enum: ["Post", "comment"],
+      enum: ["Post", "Comment"],
     }
   },
 

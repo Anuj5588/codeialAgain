@@ -1,10 +1,56 @@
 const User = require("../models/user");
 const fs = require('fs');
 const path = require('path');
-
-
-
 const Post = require("../models/post");
+
+
+module.exports.findUser= function(req,res){
+ return res.render('finduser', {title:"find user"})
+
+
+
+}
+
+module.exports.validUser= function(req,res){
+  
+ User.findOne({email:req.body.email},function(err,user){
+
+ if(err){
+
+  console.log("error in finding the user",err);
+ 
+   
+ }
+
+
+ if(user){
+
+  return res.render('reset_password',{title:"resetPassword"});
+ }
+
+ if(!user){
+  console.log("it is not valid user");
+
+  return res.redirect('back');
+
+
+ }
+
+
+
+ });
+
+
+
+
+
+
+
+}
+
+
+
+
 module.exports.profile = function (req, res) {
   User.findById(req.params.id, function (err, user) {
     return res.render("users_profile", {
@@ -31,6 +77,9 @@ module.exports.profile = function (req, res) {
 
   // }
 };
+
+
+
 
 // render the sign up page
 module.exports.signUp = function (req, res) {
