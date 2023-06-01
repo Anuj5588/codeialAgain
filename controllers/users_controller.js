@@ -162,6 +162,7 @@ module.exports.destroySession = async function (req, res) {
  try{
 // for update the data
 module.exports.update = async function (req, res) {
+  console.log("***************",req.body)
   //   if (req.user.id == req.params.id) {
   //     User.findByIdAndUpdate(req.params.id, req.body, function (err, user) {
   //       return res.redirect("back");

@@ -4,10 +4,11 @@ const User = require('../models/user');
 
 
 module.exports.home = async function(req, res){
+    console.log(req.cookies);
 
     try{
         // CHANGE :: populate the likes of each post and comment
-        let posts = await Post.find({})
+        let post = await Post.find({})
         .sort('-createdAt')
         .populate('user')
         .populate({
@@ -26,7 +27,7 @@ module.exports.home = async function(req, res){
 
         return res.render('home', {
             title: "Codeial | Home",
-            posts:  posts,
+            posts:  post,
             all_users: users
         });
 
